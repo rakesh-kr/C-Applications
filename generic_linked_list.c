@@ -2,13 +2,6 @@
 #include<stdlib.h>
 #include<string.h>
 
-
-/*
-00000000 = nothing = 0
-00000001 = int = 1
-00000010 = float = 2
-00000100 = char = 4
-*/
 short myDataType=0;
 
 struct node {
@@ -73,7 +66,7 @@ void print_list_new(struct node *head){
     printf("null\n");
 }
 
-
+/*not using this*/
 void print_list(struct node *head){
     struct node *p=head;
     printf("\nList content =>:\n");
@@ -103,12 +96,10 @@ struct node* insert_end(struct node** head,void * data,int type){
     int x;
     if(type==1){
         x=*((int *)data);
-        //printf("%d value to be inserted\n",x);
         new_node=get_new_int_node(x);
         printf("%d value will be inserted in the node\n",*(int *)(new_node->data));
     }else if(type==2){
         double y=*((double *)data);
-        //printf("%f value to be inserted\n",y);
         new_node=get_new_double_node(y);
         printf("%f value will be inserted in the node\n",*(double *)(new_node->data));
     }else{
@@ -119,8 +110,6 @@ struct node* insert_end(struct node** head,void * data,int type){
     }
     if(*head == NULL){
         *head=new_node;
-        //printf("%d from func\n",*(int *)((*head)->data));
-        //printf("%d type value from func\n",(*head)->type);
         return *head;
     }
 
@@ -128,7 +117,6 @@ struct node* insert_end(struct node** head,void * data,int type){
         p=p->next;
     }
     p->next=new_node;
-    //printf("%d from func\n",*(int *)((*head)->data));
     return *head;
 }
 
@@ -142,18 +130,14 @@ int determine(char *input){
             break;
         }
         if(isdigit(c)){
-            myDataType=1; //dont touch float bit
-            //printf("int\n");
+            myDataType=1;
         }else if(c=='.'){
             myDataType=2;
             dot_present=1;
-            //printf("dot\n");
         }else if(isalpha(c) || c==' '){
             myDataType = 4;
-            //printf("char\n");
             return myDataType;
         }else{
-            //printf("anything\n");
             myDataType = 4;
             return myDataType;
         }
@@ -187,23 +171,14 @@ void main(){
             int int_input;
             double double_input;
             if(type==1){
-                //printf("%s is a int\n",input);
                 int_input=atoi(input);
                 insert_end(&head,&int_input,type);
-                //printf("%d inserted to list successfully\n",*(int *)(head->data));
-                //printf("%d type vlaue from main\n",head->type);
             }else if(type == 2){
-                //printf("%s is a float\n",input);
                 double_input=atof(input);
-                //printf("%f after conversion\n",double_input);
                 insert_end(&head,&double_input,type);
-                //printf("%f inserted to list\n",double_input);
             }else{
-                //printf("%s is a char\n",input);
                 insert_end(&head,input,type);
-                //printf("%s inserted to list\n",input);
             }
-            //memset(input,'\0',250);
             break;
         case 2:
             print_list_new(head);

@@ -6,3 +6,4 @@ This directory contains programs/applications written in C programming language
 
 2. Generic Linked List:
   Linked list which can store different type of data types in different nodes. i.e one node containing integer, other node containing float or char data. 
+  eg : 1 -> 2.34 -> r -> a -> k -> e -> s -> h -> 3.0 -> 1000

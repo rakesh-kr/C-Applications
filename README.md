@@ -10,5 +10,5 @@ This directory contains programs/applications written in C programming language
 
 3. strtok() implementation
   Implement strtok functions of strings.
-  eg: if input string is ”ab,cd,e” and delimiter is "-"
+  eg: if input string is ”ab-cd-e” and delimiter is "-"
   Output should be 3 strings–“ab”, “cd” and “e” if we consider the delimiter as ‘-’
